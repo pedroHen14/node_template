@@ -26,6 +26,7 @@ class SessionController {
       })
 
       res.status(201).send({
+        id: userExists.id,
         name: userExists.name,
         email: userExists.email,
         token
