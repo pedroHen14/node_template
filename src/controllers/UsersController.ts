@@ -8,7 +8,14 @@ const prisma = new PrismaClient()
 class UsersController {
   public async findAll(_: Request, res: Response) {
     try {
-      const users = await prisma.user.findMany();
+      const users = await prisma.user.findMany({
+        select: {
+          createdAt: true,
+          email: true,
+          id: true,
+          name: true,
+        }
+      });
 
       res.status(200).json(users)
     } catch (error) {
